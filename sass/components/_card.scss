@@ -1,0 +1,217 @@
+.section-cards {
+  padding-top: 10rem;
+}
+
+.card {
+  //function
+  perspective: 150rem; //設定透視。指定觀察者與平面的距離。越靠近Z軸效果越明顯
+  -moz-perspective: 150rem; //for firefox
+  position: relative;
+  height: 50rem;
+
+  &__side {
+    height: 50rem;
+    transition: all 0.8s ease;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    backface-visibility: hidden; //把背面的藏起來
+    border-radius: 3px;
+    overflow: hidden; //把超過原角的隱藏
+    box-shadow: 0 1.5rem 4rem rgba($color-black, 0.15);
+
+    &--front {
+      background-color: $color-white;
+    }
+
+    &--back {
+      transform: rotateY(-180deg); //一個正的一個就要負的 翻面才會相反
+      &-1 {
+        background-image: linear-gradient(
+          to right bottom,
+          $color-secondary-light,
+          $color-secondary-dark
+        );
+      }
+      &-2 {
+        background-image: linear-gradient(
+          to right bottom,
+          $color-primary-light,
+          $color-primary-dark
+        );
+      }
+      &-3 {
+        background-image: linear-gradient(
+          to right bottom,
+          $color-tertiary-light,
+          $color-tertiary-dark
+        );
+      }
+    }
+  }
+
+  &:hover &__side--front {
+    transform: rotateY(180deg);
+  }
+
+  &:hover &__side--back {
+    transform: rotateY(0);
+  }
+
+  //front side styling
+  &__picture {
+    background-size: cover;
+    height: 23rem;
+    background-blend-mode: screen; //舊IE沒法用
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+    border-top-right-radius: 3px;
+    border-top-left-radius: 3px;
+
+    &--1 {
+      // background-image: linear-gradient(
+      //     to right bottom,
+      //     $color-secondary-light,
+      //     $color-secondary-dark
+      //   ),
+      //   url(../img/hanli_In.jpg); //注意這是針對build過的相對路徑，在這裡是是對應style.css
+      background-image: url($pic-hanli-inside); //注意這是針對build過的相對路徑，在這裡是是對應style.css
+    }
+    &--2 {
+      background-image: url($pic-hanli-building);
+      // linear-gradient(
+      //   to right bottom,
+      //   $color-primary-light,
+      //   $color-primary-dark
+      // ),
+    }
+  }
+  &__heading {
+    font-size: 2.8rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    text-align: right;
+    color: $color-white;
+    position: absolute;
+    top: 12rem;
+    right: 2rem;
+    width: 75%;
+  }
+
+  &__heading-span {
+    padding: 1rem 1.5rem;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone; //讓折行真的成為兩行，而不會斷行處沒有padding
+    &--1 {
+      background-image: linear-gradient(
+        to right bottom,
+        rgba($color-secondary-light, 0.85),
+        rgba($color-secondary-dark, 0.85)
+      );
+    }
+    &--2 {
+      background-image: linear-gradient(
+        to right bottom,
+        rgba($color-primary-light, 0.85),
+        rgba($color-primary-dark, 0.85)
+      );
+    }
+  }
+
+  &__details {
+    padding: 2rem;
+    ul {
+      list-style: none;
+      width: 80%;
+      margin: 0 auto;
+
+      li {
+        text-align: center;
+        font-size: 1.5rem;
+        padding: 1rem;
+        &:not(:last-child) {
+          border-bottom: 1px solid $color-grey-light-2;
+        }
+      }
+    }
+  }
+
+  &__details.card__details--2 {
+    ul {
+      li {
+        font-size: 1rem;
+        text-align: left;
+      }
+    }
+  }
+
+  //Front Side Styling
+  &__cta {
+    width: 90%;
+    text-align: center;
+    @include Placecenter;
+  }
+  &__back-box {
+    text-align: center;
+    color: $color-white;
+    margin-bottom: 8rem;
+  }
+  &__back-only {
+    font-size: 1.4rem;
+    text-transform: uppercase;
+  }
+  &__back-value {
+    font-size: 6rem;
+    font-weight: 100;
+  }
+
+  //media***********************************
+  //因應行動裝置使用
+  //1. 改為不翻面
+  //2. 背面訊息改為下方呈現
+
+  //@include respond(tab-port) {如果平板等是hover:none
+  @media only screen and (max-width: 56.25em), only screen and(hover:none) {
+    height: auto;
+    border-radius: 3px;
+    background-color: $color-white;
+    box-shadow: 0 1.5rem 4rem rgba($color-black, 0.15);
+    &__side {
+      height: auto;
+      position: relative;
+      box-shadow: none;
+
+      &--back {
+        transform: rotateY(0);
+        clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%);
+      }
+    }
+
+    &:hover &__side--front {
+      transform: rotateY(0);
+    }
+
+    &__details {
+      padding-top: 1rem 3rem;
+    }
+    //Front Side Styling
+    &__cta {
+      position: relative;
+      top: 0%;
+      left: 0;
+      transform: translate(0);
+      width: 100%;
+      padding: 7rem 4rem 4rem 4rem;
+    }
+    &__back-box {
+      margin-bottom: 3rem;
+    }
+    &__back-value {
+      font-size: 4rem;
+      @include respond(phone) {
+        font-size: 3rem;
+      }
+    }
+  }
+}

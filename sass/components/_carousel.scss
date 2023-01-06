@@ -1,0 +1,119 @@
+.gallery {
+  display: flex;
+  padding: 10rem 0;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel {
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  /*包括下面的按鈕*/
+  height: 63rem;
+  width: 60rem;
+  overflow: hidden;
+  @include respond(phone) {
+    height: 53rem;
+    width: 50rem;
+  }
+}
+
+.car_image-container {
+  width: 600rem;
+
+  display: flex;
+  /*讓js去改變值*/
+  transform: translateX(0);
+  transition: transform 0.5s ease-in-out;
+}
+
+.car_button-container {
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+}
+
+.car_btn {
+  background-color: #bf7fb3;
+  color: #fff;
+  border: none;
+  padding: 0.5rem;
+  cursor: pointer;
+  width: 49.5%;
+}
+
+.car_btn:hover {
+  opacity: 0.9;
+}
+
+.car_btn:focus {
+  outline: none;
+}
+
+.car_img {
+  width: 60rem;
+  height: 60rem;
+  @include respond(phone) {
+    height: 50rem;
+    width: 50rem;
+  }
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  &-1 {
+    background-image: url($panel-1);
+    // background-position: center top;
+    // @include respond(phone) {
+    //   background-position: 80% top;
+    // }
+  }
+
+  &-2 {
+    background-image: url($panel-2);
+    // background-position: center 30%;
+    // @include respond(phone) {
+    //   background-position: left center;
+    // }
+  }
+  &-3 {
+    background-image: url($panel-3);
+    // background-position: center top;
+    // @include respond(phone) {
+    //   background-position: 55% center;
+    // }
+  }
+  &-4 {
+    background-image: url($panel-4);
+    // background-position: center 70%;
+    // @include respond(phone) {
+    //   background-position: 70% center;
+    // }
+  }
+  &-5 {
+    background-image: url($panel-5);
+    // background-position: center top;
+    // @include respond(phone) {
+    //   background-position: 45% center;
+    // }
+  }
+  &-6 {
+    background-image: url($panel-6);
+    // background-position: center top;
+    // @include respond(phone) {
+    //   background-position: 45% center;
+    // }
+  }
+  &-7 {
+    background-image: url($panel-7);
+    // background-position: center top;
+    // @include respond(phone) {
+    //   background-position: 45% center;
+    // }
+  }
+  &-8 {
+    background-image: url($panel-8);
+    // background-position: center top;
+    // @include respond(phone) {
+    //   background-position: 45% center;
+    // }
+  }
+}

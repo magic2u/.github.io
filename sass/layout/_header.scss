@@ -1,0 +1,85 @@
+//header最外層
+.header {
+  margin-top: 3rem;
+  position: relative;
+  height: 200vh;
+}
+.header__pic {
+  position: sticky;
+  background-image: url($pic-header);
+  background-position: center center;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  background-size: cover;
+  @include respond(phone) {
+    background-position: center center;
+  }
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+}
+//測試stiky
+.header__container {
+  position: absolute;
+  //   background-image: url(../img/W1.jpg);
+  background-image: linear-gradient(
+    to right bottom,
+    rgba($color-primary-light, 0.6),
+    rgba($color-primary-dark, 0.6)
+  );
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+
+  animation: fadein;
+  animation-duration: 1.5s; /*整體持續時間*/
+  animation-timing-function: ease-out;
+}
+//包text
+.header__text-box {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+//text本身
+//點選問卷btn
+// .header__btn {
+//   position: absolute;
+//   top: 70%;
+//   left: 50%;
+// }
+
+.heading-primary {
+  color: $color-white;
+  text-transform: uppercase;
+  backface-visibility: hidden; /*3D物件的背面能不能顯示，純粹解決動或可能結束時會抖動的問題........*/
+  margin-bottom: 6rem;
+
+  display: block;
+  font-size: 4rem;
+  font-weight: 400;
+  letter-spacing: 1.5rem;
+  white-space: nowrap;
+
+  animation: moveInLeft;
+  animation-duration: 1.5s; /*整體持續時間*/
+  animation-timing-function: ease-out;
+  /*animation-delay: 3s; 延遲播放*/
+  /*animation-iteration-count:2 ;重複播放次數*/
+  /*animation-timing-function: ;播放動畫的速度曲線，預設為線性*/
+  @include respond(phone) {
+    font-size: 2rem;
+    letter-spacing: 0.5rem;
+    font-family: 4rem;
+  }
+}
+
+.header__btn {
+  animation: moveInBottom;
+  animation-duration: 1.5s; /*整體持續時間*/
+  animation-timing-function: ease-out;
+}

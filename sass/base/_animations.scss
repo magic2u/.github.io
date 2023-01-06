@@ -1,0 +1,41 @@
+//動畫
+@keyframes moveInLeft {
+  0% {
+    /*動畫起始*/
+    opacity: 0;
+    transform: translateX(-10rem); /*X軸位移*/
+  }
+
+  80% {
+    transform: translateX(1rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(0); /*最終位置=>到現在的位置*/
+    /*動畫結束*/
+  }
+}
+
+@keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes moveInBottom {
+  0% {
+    /*動畫起始*/
+    opacity: 0;
+    transform: translateY(3rem); /*X軸位移*/
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(0); /*最終位置=>到現在的位置*/
+    /*動畫結束*/
+  }
+}
